@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { appContext } from "../contextApi/selectedMealsContext";
-import {convertNum} from "../functions/validation";
+import { convertNum } from "../functions/validation";
 export default function MealItem() {
   let { Error, addItem, availbleMeals, isLoading } = useContext(appContext);
 
@@ -14,7 +14,10 @@ export default function MealItem() {
     return (
       <ul className="meal-item" key={meal.id}>
         <li>
-          <img src={`http://localhost:3000/${meal.image}`} alt="MealImage" />
+          <img
+            src={`https://restaurantt.onrender.com/${meal.image}`}
+            alt="MealImage"
+          />
           <h3>{meal.name}</h3>
           <p className="meal-item-price">{convertNum(meal.price)}</p>
           <p className="meal-item-description">{meal.description}</p>

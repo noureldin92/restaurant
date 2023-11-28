@@ -1,5 +1,5 @@
 export async function getData() {
-  let primaryFetch = await fetch("http://localhost:3000/meals");
+  let primaryFetch = await fetch("https://restaurantt.onrender.com/meals");
   let finalData = await primaryFetch.json();
 
   if (!primaryFetch.ok) {
