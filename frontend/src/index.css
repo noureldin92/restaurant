@@ -2,7 +2,6 @@
 
 * {
   box-sizing: border-box;
-  padding: 0;
 }
 
 body {
@@ -39,8 +38,6 @@ body {
 #main-header button {
   font-size: 1.5rem;
   font-family: "Lato", sans-serif;
-  background-color: transparent;
-  color: #ffc404;
 }
 
 h1 {
@@ -93,6 +90,7 @@ h1 {
 
 .meal-item-description {
   margin: 1rem;
+  min-height: 75px;
 }
 
 .meal-item-price {
@@ -102,9 +100,8 @@ h1 {
   font-size: 0.9rem;
   font-weight: bold;
   padding: 0.5rem 2rem;
-  margin: 0 auto;
+  margin: 0;
   border-radius: 4px;
-  width: 50%;
 }
 
 .meal-item-actions {
@@ -188,18 +185,9 @@ h1 {
   flex-direction: column;
 }
 
-button:disabled {
-  background-color: gray;
-  border: none;
-}
-button:disabled:hover {
-  background-color: gray;
-}
-
 .control label {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  margin: 4px 0;
 }
 
 .control input {
@@ -234,17 +222,6 @@ button:disabled:hover {
   color: #1f1a09;
 }
 
-.mealButton {
-  width: 180px;
-  margin: 0 auto 16px;
-}
-.dialog {
-  display: flex;
-  justify-content: flex-end;
-}
-.alignSelf {
-  align-self: end;
-}
 .text-button {
   font: inherit;
   cursor: pointer;
@@ -289,4 +266,13 @@ button:disabled:hover {
   text-align: center;
   font-size: 12px;
   font-weight: bold;
+}
+
+.dialog {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alignSelf {
+  align-self: end;
 }

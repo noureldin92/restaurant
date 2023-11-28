@@ -12,8 +12,8 @@ export default function MealItem() {
   }
   return availbleMeals.map((meal) => {
     return (
-      <ul className="meal-item" key={meal.id}>
-        <li>
+      <ul id="meals" key={meal.id}>
+        <li className="meal-item">
           <img
             src={`https://restaurantt.onrender.com/${meal.image}`}
             alt="MealImage"
@@ -21,12 +21,14 @@ export default function MealItem() {
           <h3>{meal.name}</h3>
           <p className="meal-item-price">{convertNum(meal.price)}</p>
           <p className="meal-item-description">{meal.description}</p>
-          <button
-            onClick={() => addItem(meal.id, meal.name, meal.price)}
-            className="button mealButton"
-            type="button ">
-            add to cart
-          </button>
+          <p className="meal-itsm-actions">
+            <button
+              onClick={() => addItem(meal.id, meal.name, meal.price)}
+              className="button mealButton"
+              type="button ">
+              add to cart
+            </button>
+          </p>
         </li>
       </ul>
     );
