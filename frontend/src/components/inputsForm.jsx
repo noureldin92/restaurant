@@ -36,7 +36,7 @@ export default function FormInputs() {
   function submitHandler(e) {
     e.preventDefault();
     async function send() {
-      await fetch("http://localhost:3000/orders", {
+      await fetch("https://restaurantt.onrender.com/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
