@@ -1,8 +1,18 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { appContext } from "../contextApi/selectedMealsContext";
 import { convertNum } from "../functions/validation";
+import ItemButton from "./itemButton";
 export default function MealItem() {
-  let { Error, addItem, availbleMeals, isLoading } = useContext(appContext);
+  let {
+    Error,
+    addItem,
+    availbleMeals,
+    isLoading,
+    selectedRef,
+    mealButtomCalssName,
+    mealButtomHTML,
+  } = useContext(appContext);
+  console.log(selectedRef);
 
   if (isLoading) {
     return <h1>LOADING ....</h1>;
@@ -21,13 +31,13 @@ export default function MealItem() {
           <h3>{meal.name}</h3>
           <p className="meal-item-price">{convertNum(meal.price)}</p>
           <p className="meal-item-description">{meal.description}</p>
-          <p className="meal-itsm-actions">
-            <button
-              onClick={() => addItem(meal.id, meal.name, meal.price)}
-              className="button mealButton"
+          <p className={`meal-item-actions`}>
+            <ItemButton
+              onClick={(e) => addItem(meal.id, meal.name, meal.price, e.target)}
+              className={`button mealButton`}
               type="button ">
               add to cart
-            </button>
+            </ItemButton>
           </p>
         </li>
       </ul>

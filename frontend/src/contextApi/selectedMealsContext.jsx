@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer, useRef } from "react";
+import { createContext, useReducer, useRef, useState } from "react";
 import { useFetch } from "../Hooks/useFetch";
 import { getData } from "../functions/getData";
 export let appContext = createContext({
@@ -97,7 +97,6 @@ export function ContextProvider({ children }) {
   let totalCost = 0;
   let { availbleMeals, isLoading, Error } = useFetch(getData);
   let [mealsState, mealsDispatch] = useReducer(mealsReducer, []);
-
   let modalControl = useRef();
   let formControl = useRef();
   let successRef = useRef();
@@ -127,7 +126,7 @@ export function ContextProvider({ children }) {
       type: "clearArr",
     });
   }
-  function addItems(id, name, price) {
+  function addItems(id, name, price, e) {
     mealsDispatch({
       type: "addItem",
       id: id,
@@ -136,6 +135,11 @@ export function ContextProvider({ children }) {
       count: 0,
       cost: 0,
     });
+
+    e.className = "button mealButton plusOne";
+    setTimeout(() => {
+      e.className = "button mealButton";
+    }, 300);
   }
 
   function increase(oldCount, id, price) {

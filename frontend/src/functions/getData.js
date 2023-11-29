@@ -3,6 +3,6 @@ export async function getData() {
   let finalData = await primaryFetch.json();
 
   if (!primaryFetch.ok) {
-    throw new Error("Faild To Fetch Data");
+    throw new Error("Faild To Fetch Data.");
   } else return finalData;
 }
