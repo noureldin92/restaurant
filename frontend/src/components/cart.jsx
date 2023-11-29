@@ -1,8 +1,12 @@
 import { useContext } from "react";
-import { appContext } from "../contextApi/selectedMealsContext";
+import {
+  ContextProvider,
+  appContext,
+} from "../contextApi/selectedMealsContext";
 import Modal from "./reuseableModal";
 import { convertNum } from "../functions/validation";
 import Reactdom from "react-dom";
+let validateArr = false;
 
 export default function Cart() {
   let ctx = useContext(appContext);
@@ -13,19 +17,21 @@ export default function Cart() {
   let totalCoast = ctx.totalcost;
 
   selectedMeals.map((ele, ind) => {
-    ele.count === 0 ? selectedMeals.splice(ind, 1) : ele;
+    ele.count < 0 || ele.count === null ? selectedMeals.splice(ind, 1) : ele;
+    ele.count === null && (validateArr = true);
   });
 
   return Reactdom.createPortal(
     <Modal className="cart" myRef={ref} onClose={ctx.closeDialog}>
-      {selectedMeals.length === 0 ? (
+      {(selectedMeals.length <= 0 && validateArr) ||
+      selectedMeals.length === 0 ? (
         <h3>Your Cart Is Empty</h3>
       ) : (
         <>
           <h2>Your Cart</h2>
           <ul className="cart">
             {selectedMeals.map((meal) => {
-              if (meal.count != 0)
+              if (meal.count >= 0)
                 return (
                   <li className="cart-item" key={meal.id}>
                     <div className="cart-item-mealname">

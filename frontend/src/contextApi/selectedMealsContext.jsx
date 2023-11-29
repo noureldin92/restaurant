@@ -103,7 +103,11 @@ export function ContextProvider({ children }) {
 
   mealsState &&
     mealsState.map((ele) => {
-      totalCost += ele.cost;
+      if (ele.count >= 0) {
+        totalCost += ele.cost;
+      } else {
+        ele.count = null;
+      }
     });
 
   function openModal() {

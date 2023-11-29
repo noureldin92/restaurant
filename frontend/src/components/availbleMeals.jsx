@@ -2,7 +2,7 @@ import MealItem from "./mealItem";
 
 export default function AvailbleMeals() {
   return (
-    <main id="meals">
+    <main>
       <MealItem />
     </main>
   );
